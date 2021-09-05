@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME Open Other Maps
 // @namespace    https://greasyfork.org/users/30701-justins83-waze
-// @version      2021.07.28.01
+// @version      2021.09.05.01
 // @description  Links for opening external resources at the WME location and WME from external resources
 // @author       JustinS83
 // @include      https://www.waze.com/editor*
@@ -388,7 +388,7 @@
 
             $('#OOMMiDriveImg').click(function(){
                 var center = W.map.getCenter().transform(W.map.getProjectionObject(), W.map.getOLMap().displayProjection);
-                window.open(`https://mdotjboss.state.mi.us/MiDrive/map?constZone=true&incidents=true&lat=${center.lat}&lon=${center.lon}&zoom=${W.map.getZoom() + 12}`, 'MiDrive');
+                window.open(`https://mdotjboss.state.mi.us/MiDrive/map?constZone=true&incidents=true&lat=${center.lat}&lon=${center.lon}&zoom=${W.map.getZoom()}`, 'MiDrive');
             });
         }
 
@@ -408,7 +408,7 @@
                 let latlon = get4326CenterPoint();
                 let lang = GetLanguage();
 
-                window.open('https://www.google.com/maps/@' + latlon.lat + ',' + latlon.lon + ',' + ( W.map.getZoom() + 12) + 'z' + (lang != "" ? "?hl=" + lang : ""), 'Google Maps');
+                window.open('https://www.google.com/maps/@' + latlon.lat + ',' + latlon.lon + ',' + ( W.map.getZoom()) + 'z' + (lang != "" ? "?hl=" + lang : ""), 'Google Maps');
             });
         }
 
@@ -426,7 +426,7 @@
             $('#OOMMapillaryImg').click(function(){
                 let latlon = get4326CenterPoint();
 
-                window.open(`https://www.mapillary.com/app/?lat=${latlon.lat}&lng=${latlon.lon}&z=${( W.map.getZoom() + 11)}`, 'Mapillary');
+                window.open(`https://www.mapillary.com/app/?lat=${latlon.lat}&lng=${latlon.lon}&z=${( W.map.getZoom())}`, 'Mapillary');
             });
         }
 
@@ -447,7 +447,7 @@
                 let lang = GetLanguage();
                 if(lang === "")
                     lang = "en";
-                window.open(`http://wikimapia.org/#${(lang !== "" ? "lang=" + lang : "")}&lat=${latlon.lat}&lon=${latlon.lon}&z=${( W.map.getZoom() + 12)}&m=b`);
+                window.open(`http://wikimapia.org/#${(lang !== "" ? "lang=" + lang : "")}&lat=${latlon.lat}&lon=${latlon.lon}&z=${( W.map.getZoom())}&m=b`);
             });
         }
 
@@ -467,7 +467,7 @@
                 let latlon = get4326CenterPoint();
                 //let lang = I18n.currentLocale().replace("en-US", "en");
 
-                window.open(`https://www.bing.com/maps?&cp=${latlon.lat}~${latlon.lon}&lvl=${( W.map.getZoom() + 12)}`);
+                window.open(`https://www.bing.com/maps?&cp=${latlon.lat}~${latlon.lon}&lvl=${( W.map.getZoom())}`);
             });
         }
 
@@ -487,7 +487,7 @@
                 let latlon = get4326CenterPoint();
                 //let lang = I18n.currentLocale().replace("en-US", "en");
 
-                window.open(`https://www.openstreetmap.org/#map=${(W.map.getZoom() + 12)}/${latlon.lat}/${latlon.lon}`);
+                window.open(`https://www.openstreetmap.org/#map=${(W.map.getZoom())}/${latlon.lat}/${latlon.lon}`);
             });
         }
 
@@ -507,7 +507,7 @@
                 let latlon = get4326CenterPoint();
                 //let lang = I18n.currentLocale().replace("en-US", "en");
 
-                window.open(`https://n.maps.yandex.ru/#!/?z=${(W.map.getZoom() + 12)}&ll=${latlon.lon}%2C${latlon.lat}&l=nk%23sat`);
+                window.open(`https://n.maps.yandex.ru/#!/?z=${(W.map.getZoom())}&ll=${latlon.lon}%2C${latlon.lat}&l=nk%23sat`);
             });
         }
 
@@ -526,7 +526,7 @@
             $('#OOMHereImg').click(function(){
                 let latlon = get4326CenterPoint();
 
-                window.open(`https://wego.here.com/?map=${latlon.lat},${latlon.lon},${(W.map.getZoom() + 12)},satellite&x=ep`);
+                window.open(`https://wego.here.com/?map=${latlon.lat},${latlon.lon},${(W.map.getZoom())},satellite&x=ep`);
             });
         }
 
@@ -561,14 +561,14 @@
                 let mapScale = 36111.909643;
 
                 switch (W.map.getZoom()) {
-                    case 0:
-                    case 1:
+                    case 12:
+                    case 13:
                         mapScale = 72223.819286;
                         break;
-                    case 2:
+                    case 14:
                         mapScale = 36111.909643;
                         break;
-                    case 3:
+                    case 15:
                         mapScale = 18055.954822;
                         break;
                     default:
@@ -610,14 +610,14 @@
                 let mapScale = 36111.909643;
 
                 switch (W.map.getZoom()) {
-                    case 0:
-                    case 1:
+                    case 12:
+                    case 13:
                         mapScale = 72223.819286;
                         break;
-                    case 2:
+                    case 14:
                         mapScale = 36111.909643;
                         break;
-                    case 3:
+                    case 15:
                         mapScale = 18055.954822;
                         break;
                     default:
@@ -643,7 +643,7 @@
 
             $('#OOMNYGISImg').click(function(){
                 let latlon = get4326CenterPoint();
-                window.open(`https://orthos.dhses.ny.gov/?lat=${latlon.lat}&long=${latlon.lon}&zoom=${(W.map.getZoom() + 12)}`);
+                window.open(`https://orthos.dhses.ny.gov/?lat=${latlon.lat}&long=${latlon.lon}&zoom=${(W.map.getZoom())}`);
             });
         }
 
@@ -660,7 +660,7 @@
 
             $('#OOMNY511Img').click(function(){
                 let latlon = get4326CenterPoint();
-                window.open(`https://511ny.org/?latitude=${latlon.lat}&longitude=${latlon.lon}&zoom=${(W.map.getZoom() + 12)}`);
+                window.open(`https://511ny.org/?latitude=${latlon.lat}&longitude=${latlon.lon}&zoom=${(W.map.getZoom())}`);
             });
         }
         $('#OOMLA511').remove();
@@ -676,7 +676,7 @@
 
             $('#OOMLA511Img').click(function(){
                 let latlon = get4326CenterPoint();
-                window.open(`https://511la.org/?latitude=${latlon.lat}&longitude=${latlon.lon}&zoom=${(W.map.getZoom() + 12)}`);
+                window.open(`https://511la.org/?latitude=${latlon.lat}&longitude=${latlon.lon}&zoom=${(W.map.getZoom())}`);
             });
         }
 
@@ -693,7 +693,7 @@
 
             $('#OOMNexarImg').click(function(){
                 let latlon = get4326CenterPoint();
-                window.open(`https://citystream.getnexar.com/virtualcam?center=%7B%22lng%22%3A${latlon.lon}%2C%22lat%22%3A${latlon.lat}%7D&zoom=${(W.map.getZoom() + 11)}`);
+                window.open(`https://citystream.getnexar.com/virtualcam?center=%7B%22lng%22%3A${latlon.lon}%2C%22lat%22%3A${latlon.lat}%7D&zoom=${(W.map.getZoom())}`);
             });
         }
 
@@ -717,7 +717,7 @@
                 var dest = new proj4.Proj('ESRI:102718');
 
                 geoPoint = proj4.transform(source, dest, geoPoint);
-                var zoom = (W.map.getZoom())+3;
+                var zoom = (W.map.getZoom())-9;
                 var URL='http://maps.nyc.gov/doitt/nycitymap/?z='+zoom+'&p='+(Math.round(geoPoint.x)*3.2808)+','+(Math.round(geoPoint.y)*3.2808)+'&c=GISBasic&f=DDC_PROJECTS';
                 window.open(URL,"_blank");
             });
@@ -735,7 +735,7 @@
             $(insertPath).prepend($sectionRosreestr.html());
 
             $('#OOMrosreestrImg').click(function(){
-                window.open(`http://pkk5.rosreestr.ru/#x=${W.map.getCenter().lon}&y=${W.map.getCenter().lat}&z=${(W.map.getZoom() + 12)}`);
+                window.open(`http://pkk5.rosreestr.ru/#x=${W.map.getCenter().lon}&y=${W.map.getCenter().lat}&z=${(W.map.getZoom())}`);
             });
         }
 
@@ -752,7 +752,7 @@
 
             $('#OOMPA511Img').click(function(){
                 let latlon = get4326CenterPoint();
-                window.open(`http://www.511pa.com/Traffic.aspx?${latlon.lat},${latlon.lon},${(W.map.getZoom() + 12)}z`);
+                window.open(`http://www.511pa.com/Traffic.aspx?${latlon.lat},${latlon.lon},${(W.map.getZoom())}z`);
             });
         }
 
@@ -772,7 +772,7 @@
                 let latlon = get4326CenterPoint();
                 let lang = GetLanguage();
 
-                window.open(`https://www.mdottraffic.com/default.aspx?lat=${latlon.lat}&lon=${latlon.lon}&zoom=${(W.map.getZoom() + 12)}`, 'Mississippi 511');
+                window.open(`https://www.mdottraffic.com/default.aspx?lat=${latlon.lat}&lon=${latlon.lon}&zoom=${(W.map.getZoom())}`, 'Mississippi 511');
             });
         }
 
@@ -788,7 +788,7 @@
             $(insertPath).prepend($sectionLAFC.html());
             $('#OOMLAFCImg').click(function(){
                 let latlon = get4326CenterPoint();
-                window.open(`http://www.arcgis.com/home/webmap/viewer.html?webmap=a37461260bec43dea7bcbf6b710a662e&center=${latlon.lon},${latlon.lat}&level=${(W.map.getZoom() + 12)}`);
+                window.open(`http://www.arcgis.com/home/webmap/viewer.html?webmap=a37461260bec43dea7bcbf6b710a662e&center=${latlon.lon},${latlon.lat}&level=${(W.map.getZoom())}`);
             });
         }
 
@@ -822,7 +822,7 @@
                 let latlon = W.map.getCenter();
 
                 //http://nmroads.com/mapIndex.html?
-                window.open(`http://nmroads.com/mapIndex.html?X=${latlon.lon}&Y=${latlon.lat}&zoom=${(W.map.getZoom() + 12)}`);
+                window.open(`http://nmroads.com/mapIndex.html?X=${latlon.lon}&Y=${latlon.lat}&zoom=${(W.map.getZoom())}`);
             });
         }
 
@@ -840,7 +840,7 @@
                 let latlon = W.map.getCenter();
 
                 //https://www.mapwv.gov/flood/map/?x=-8915274&y=4681300&l=4&v=0
-                window.open(`https://www.mapwv.gov/flood/map/?x=${latlon.lon}&y=${latlon.lat}&l=${(W.map.getZoom()+4)}`);
+                window.open(`https://www.mapwv.gov/flood/map/?x=${latlon.lon}&y=${latlon.lat}&l=${(W.map.getZoom()-8)}`);
             });
         }
 
@@ -857,7 +857,7 @@
             $('#OOMGMDMImg').click(function(){
                 let latlon = W.map.getCenter().transform(W.map.getProjectionObject(), W.map.getOLMap().displayProjection);
 
-                window.open(`http://gaia.inegi.org.mx/mdm6/?v=${btoa("lat:"+latlon.lat+",lon:"+latlon.lon+",z:"+(W.map.getZoom()+8))}`);
+                window.open(`http://gaia.inegi.org.mx/mdm6/?v=${btoa("lat:"+latlon.lat+",lon:"+latlon.lon+",z:"+(W.map.getZoom()-4))}`);
             });
         }
 
@@ -917,7 +917,7 @@
             $('#OOMZoomEarthImg').click(function(){
                 let latlon = get4326CenterPoint();
                 let lang = GetLanguage();
-                window.open(`https://zoom.earth/#${latlon.lat},${latlon.lon},${( W.map.getZoom() + 12)}z,map`, 'Zoom Earth');
+                window.open(`https://zoom.earth/#${latlon.lat},${latlon.lon},${( W.map.getZoom())}z,map`, 'Zoom Earth');
             });
         }
 
@@ -935,7 +935,7 @@
 
             $('#OOMRoadworksImg').click(function(){
                 let latlon = get4326CenterPoint();
-                window.open(`https://roadworks.org/?lng=${latlon.lon}&lat=${latlon.lat}&zoom=${( W.map.getZoom() + 12)}`, 'Roadworks');
+                window.open(`https://roadworks.org/?lng=${latlon.lon}&lat=${latlon.lat}&zoom=${( W.map.getZoom())}`, 'Roadworks');
             });
         }
 
@@ -952,7 +952,7 @@
 
             $('#OOMWI511Img').click(function(){
                 let latlon = get4326CenterPoint();
-                window.open(`https://511wi.gov/?Latitude=${latlon.lat}&Longitude=${latlon.lon}&Zoom=${(W.map.getZoom() + 12)}&SelectedLayers=WeatherAlerts,Closures#:Alerts`);
+                window.open(`https://511wi.gov/?Latitude=${latlon.lat}&Longitude=${latlon.lon}&Zoom=${(W.map.getZoom())}&SelectedLayers=WeatherAlerts,Closures#:Alerts`);
             });
         }
 
@@ -969,7 +969,7 @@
 
             $('#OOMOHGOImg').click(function(){
                 let latlon = get4326CenterPoint();
-                window.open(`http://www.ohgo.com/central-ohio?lt=${latlon.lat}&ln=${latlon.lon}&z=${(W.map.getZoom() + 12)}&ls=incident,construction,camera`);
+                window.open(`http://www.ohgo.com/central-ohio?lt=${latlon.lat}&ln=${latlon.lon}&z=${(W.map.getZoom())}&ls=incident,construction,camera`);
             });
         }
 
@@ -986,7 +986,7 @@
 
             $('#OOMArkDOTImg').click(function(){
                 let latlon = get4326CenterPoint();
-                window.open(`https://www.idrivearkansas.com/?lat=${latlon.lat}&lon=${latlon.lon}&zoom=${(W.map.getZoom() + 12)}`);
+                window.open(`https://www.idrivearkansas.com/?lat=${latlon.lat}&lon=${latlon.lon}&zoom=${(W.map.getZoom())}`);
             });
         }
 
@@ -1005,7 +1005,7 @@
             $('#OOMDelDOTImg').click(function(){
                 let latlon = get4326CenterPoint();
 
-                window.open(`http://www.deldot.gov/map/index.shtml?lat=${latlon.lat}&lon=${latlon.lon}&zoom=${(W.map.getZoom() + 12)}`, 'DelDOT Interactive Maps');
+                window.open(`http://www.deldot.gov/map/index.shtml?lat=${latlon.lat}&lon=${latlon.lon}&zoom=${(W.map.getZoom())}`, 'DelDOT Interactive Maps');
             });
         }
 
@@ -1033,19 +1033,19 @@
                 centerPoint = proj4.transform(source, dest, centerPoint);
                 let z;
                 switch(W.map.getZoom()){
-                    case 0,1:
+                    case 12,13:
                         z=2;
                         break;
-                    case 2,3:
+                    case 14,15:
                         z=3;
                         break;
-                    case 4:
+                    case 16:
                         z=4;
                         break;
-                    case 5:
+                    case 17:
                         z=5;
                         break;
-                    case 6:
+                    case 18:
                         z=6;
                         break;
                     default:
@@ -1091,7 +1091,7 @@
 
             $('#OOMNaviExpertImg').click(function(){
                 let latlon = get4326CenterPoint();
-                window.open(`https://traffic.naviexpert.pl/?cp=${latlon.lat},${latlon.lon},${(W.map.getZoom() + 12)}`, `NaviExpert`);
+                window.open(`https://traffic.naviexpert.pl/?cp=${latlon.lat},${latlon.lon},${(W.map.getZoom())}`, `NaviExpert`);
             });
         }
 
@@ -1108,7 +1108,7 @@
 
             $('#OOMTranstarImg').click(function(){
                 let latlon = get4326CenterPoint();
-                window.open(`http://traffic.houstontranstar.org/layers/layers_ve.aspx?x=${latlon.lat}&y=${latlon.lon}&z=${(W.map.getZoom() + 12)}`);
+                window.open(`http://traffic.houstontranstar.org/layers/layers_ve.aspx?x=${latlon.lat}&y=${latlon.lon}&z=${(W.map.getZoom())}`);
             });
         }
         $('#OOMMaineDOT').remove();
@@ -1125,8 +1125,8 @@
             $('#OOMMaineDOTImg').click(function(){
                 let latlon = get4326CenterPoint();
                 let zoomtable = [225000,115000,57000,28000,14000,7000,2000,1000,500,250,100];
-                let zoom = W.map.getZoom().toString();
-                let scale = zoomtable[zoom];
+                let zoom = W.map.getZoom();
+                let scale = zoomtable[zoom - 12];
                 window.open(`https://www.maine.gov/mdot/mapviewer/?show=Conserved/Lands%2CContours%2CInterstate/Interchanges%2CRoads/General%2CState/Urban%2CTown/and/County/Boundaries%2CWater/Bodies%2CWetlands&hide=Contours/-/2/foot%2CFederal/Urban%2CMEDOT/Regions%2CMetropolitan/Planning/Areas/2015&added=Bridges/-/All%2CCulverts/-/Large%2CMajor/Signs%2CNodes%2CTraffic/Signals%2CAirports%2CFerry/Routes%2CRailroads%2CBuildings%2CLots%2CMost/Recent/Highway/Treatment%2CFederal/Functional/Class%2CHighway/Corridor/Priority%2CJurisdiction%2CNational/Highway/System%2CNAIP/2015&transparency=100&center=${latlon.lat}%2C${latlon.lon}&z=`+scale);
             });
         }
@@ -1143,7 +1143,7 @@
 
             $('#OOMDriveTexasImg').click(function(){
                 let latlon = get4326CenterPoint();
-                window.open(`https://drivetexas.org/#/${(W.map.getZoom() + 8)}/${latlon.lat}/${latlon.lon}?future=false`);
+                window.open(`https://drivetexas.org/#/${(W.map.getZoom() - 4)}/${latlon.lat}/${latlon.lon}?future=false`);
             });
         };
 
@@ -1163,7 +1163,7 @@
                 var center = W.map.getCenter().transform(W.map.getProjectionObject(), W.map.getOLMap().displayProjection);
                 //https://sitministerial.maps.arcgis.com/apps/webappviewer/index.html?id=ccc8ce73d80d4b48a4cbce97ff89d74c&center=-72.86780,-40.07118&level=12
 
-                window.open(`https://sitministerial.maps.arcgis.com/apps/webappviewer/index.html?id=ccc8ce73d80d4b48a4cbce97ff89d74c&center=${center.lon},${center.lat}&level=${W.map.getZoom() + 8}`, 'RedVial');
+                window.open(`https://sitministerial.maps.arcgis.com/apps/webappviewer/index.html?id=ccc8ce73d80d4b48a4cbce97ff89d74c&center=${center.lon},${center.lat}&level=${W.map.getZoom() - 4}`, 'RedVial');
             });
         }
 
@@ -1183,7 +1183,7 @@
                 let latlon = get4326CenterPoint();
                 let lang = GetLanguage();
 
-                window.open(`https://en.mapy.cz/zakladni?x=${latlon.lon}&y=${latlon.lat}&z=${W.map.getZoom() + 12}`, 'Mapy.CZ');
+                window.open(`https://en.mapy.cz/zakladni?x=${latlon.lon}&y=${latlon.lat}&z=${W.map.getZoom()}`, 'Mapy.CZ');
             });
         }
 
@@ -1201,8 +1201,8 @@
             $('#OOMHamONImg').click(function(){
                 let latlon = get4326CenterPoint();
                 let zoomtable = [225000,115000,57000,28000,14000,7000,2000,1000,500,250,100];
-                let zoom = W.map.getZoom().toString();
-                let scale = zoomtable[zoom];
+                let zoom = W.map.getZoom();
+                let scale = zoomtable[zoom - 12];
                 window.open(`https://spatialsolutions.hamilton.ca/hamiltonmap/index.html?center=${latlon.lon},${latlon.lat}&scale=${scale}`);
             });
         }
@@ -1221,8 +1221,8 @@
             $('#OOMNiagONImg').click(function(){
                 let latlon = get4326CenterPoint();
                 let zoomtable = [225000,115000,57000,28000,14000,7000,2000,1000,500,250,100];
-                let zoom = W.map.getZoom().toString();
-                let scale = zoomtable[zoom];
+                let zoom = W.map.getZoom();
+                let scale = zoomtable[zoom - 12];
                 window.open(`https://maps.niagararegion.ca/Navigator/?center=${latlon.lon},${latlon.lat},4326&scale=${scale}`);
             });
         }
@@ -1239,7 +1239,7 @@
             $(insertPath).prepend($sectionMissON.html());
 
             $('#OOMMissONImg').click(function(){
-                window.open(`http://www6.mississauga.ca/missmaps/maps.aspx#map=${(W.map.getZoom() + 12)}/${W.map.getCenter().lon}/${W.map.getCenter().lat}/0`);
+                window.open(`http://www6.mississauga.ca/missmaps/maps.aspx#map=${(W.map.getZoom())}/${W.map.getCenter().lon}/${W.map.getCenter().lat}/0`);
 
             });
         }
@@ -1315,11 +1315,8 @@
 
             $('#OOMBramONImg').click(function(){
                 let latlon = get4326CenterPoint();
-                let zoomtable = [225000,115000,57000,28000,14000,7000,2000,1000,500,250,100];
-                let zoom = W.map.getZoom().toString();
-                let scale = zoomtable[zoom];
 
-                window.open(`https://www.arcgis.com/apps/webappviewer/index.html?id=371691bf51754ca2bb146a395b6b55aa&center=${latlon.lon},${latlon.lat}&level=${W.map.getZoom() + 12}`, 'Brampton');
+                window.open(`https://www.arcgis.com/apps/webappviewer/index.html?id=371691bf51754ca2bb146a395b6b55aa&center=${latlon.lon},${latlon.lat}&level=${W.map.getZoom()}`, 'Brampton');
             });
         }
 
@@ -1337,11 +1334,8 @@
 
             $('#OOMHaltRLCImg').click(function(){
                 let latlon = get4326CenterPoint();
-                let zoomtable = [225000,115000,57000,28000,14000,7000,2000,1000,500,250,100];
-                let zoom = W.map.getZoom().toString();
-                let scale = zoomtable[zoom];
 
-                window.open(`https://www.google.com/maps/d/u/0/viewer?mid=1Rdn5m1RzAyU8n0HCNntID1z8etfz7qxV&ll=${latlon.lat},${latlon.lon}&z=${W.map.getZoom() + 12}`, 'Halton RLC');
+                window.open(`https://www.google.com/maps/d/u/0/viewer?mid=1Rdn5m1RzAyU8n0HCNntID1z8etfz7qxV&ll=${latlon.lat},${latlon.lon}&z=${W.map.getZoom()}`, 'Halton RLC');
             });
         }
 
