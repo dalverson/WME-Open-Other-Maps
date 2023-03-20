@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME Open Other Maps
 // @namespace    https://greasyfork.org/users/30701-justins83-waze
-// @version      2023.03.15.01
+// @version      2023.03.20.01
 // @description  Links for opening external resources at the WME location and WME from external resources
 // @author       JustinS83
 // @include      https://www.waze.com/editor*
@@ -193,7 +193,7 @@
     }
 
     function getolControlAttributionDivRightValue(){
-        return parseInt($('.olControlAttribution').css("right").slice(0,-2));;
+        return parseInt($('.wz-map-ol-control-attribution').css("right").slice(0,-2));;
     }
 
     function init(){
@@ -259,14 +259,14 @@
         $('#txtOOMLanguage')[0].value = settings.CustLang;
 
         let annoyingDivRight = getolControlAttributionDivRightValue();
-        $('.olControlAttribution').css("right", `${annoyingDivRight+100}px`);
+        $('.wz-map-ol-control-attribution').css("right", `${annoyingDivRight+100}px`);
         annoyingDivRight = getolControlAttributionDivRightValue();
         let checkedBoxes = $('.OOMchk:Checked');
         let totalButtonsWidth = 0;
         for(let i=0; i<checkedBoxes.length;i++){
             totalButtonsWidth += parseInt($(`label[for='${$(checkedBoxes[i]).attr('id')}'] img`).css('width').slice(0,-2));
         }
-        $('.olControlAttribution').css("right", `${annoyingDivRight+totalButtonsWidth}px`);
+        $('.wz-map-ol-control-attribution').css("right", `${annoyingDivRight+totalButtonsWidth}px`);
 
         LoadMapButtons();
         $('.OOMchk').change(function() {
@@ -278,11 +278,11 @@
             let btnWidth = parseInt($(`label[for='${$(this).attr('id')}'] img`).css('width').slice(0,-2));
             if(this.checked){ //add button width
                 let annoyingDivRight = getolControlAttributionDivRightValue();
-                $('.olControlAttribution').css("right", `${annoyingDivRight+btnWidth}px`);
+                $('.wz-map-ol-control-attribution').css("right", `${annoyingDivRight+btnWidth}px`);
             }
             else{ //subtract button width
                 let annoyingDivRight = getolControlAttributionDivRightValue();
-                $('.olControlAttribution').css("right", `${annoyingDivRight-btnWidth}px`);
+                $('.wz-map-ol-control-attribution').css("right", `${annoyingDivRight-btnWidth}px`);
             }
         });
         $("[id^='rad']").change(function() {
