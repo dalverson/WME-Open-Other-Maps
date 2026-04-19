@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME Open Other Maps
 // @namespace    https://greasyfork.org/users/30701-justins83-waze
-// @version      2025.04.28.01
+// @version      2026.02.11.01
 // @description  Links for opening external resources at the WME location and WME from external resources
 // @author       JustinS83
 // @match        https://www.waze.com/editor*
@@ -1766,8 +1766,8 @@
         function initGoogleMaps(){
             let $OOMWazeButton = document.createElement("div");
             $OOMWazeButton.innerHTML = `<div id="OOMWazeButtonDiv" style="height:36px; width:36px; position: fixed; right:30px; top:75px; cursor: pointer; background-image: url(${wazerIcon}); background-size: 36px 36px; background-repeat: no-repeat;" title="Open in WME"></div>`;
-            let parent = document.getElementById("content-container");
-            parent.appendChild($OOMWazeButton);
+            //Google obfuscated their classes and ids, have to append to body now and hope they don't dork it up in the future.
+            document.body.appendChild($OOMWazeButton);
 
             document.getElementById("OOMWazeButtonDiv").addEventListener("click", function(){
                 window.open(GMToWaze());
